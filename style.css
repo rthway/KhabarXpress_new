@@ -1,0 +1,64 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* Header Styles */
+.header {
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #ddd;
+}
+
+.header .date-time {
+    font-size: 14px;
+    color: #555;
+}
+
+.header .social-menu ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    gap: 10px;
+}
+
+
+/* 
+==============================
+NAVBAR
+============================== 
+*/
+.navbar.nav {
+
+    background-color: #1c8b98; /* Set navbar background color */
+}
+
+.navbar .navbar-nav .nav-link {
+    color: white; /* Make navbar text white */
+    font-weight: bold; /* Make navbar text bold */
+    font-size: 1.5em;
+}
+
+.navbar .navbar-toggler-icon {
+    background-color: white; /* Set navbar toggler icon to white */
+}
+
+.btn-outline-primary {
+    border-color: white; /* Make border color white */
+    color: white; /* Make button text white */
+}
+
+.btn-outline-primary:hover {
+    background-color: white; /* Set hover background to white */
+    color: #1c8b98; /* Change text color on hover */
+}
+.navbar-light .navbar-nav .nav-link {
+    color:aqua
+
+}
+
+
+/* Set white color for fa-bars and search icon */
+.navbar-toggler .fa-bars, 
+.btn i.fas.fa-search {
+    color: white; /* Set icon color to white */
+}
