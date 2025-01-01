@@ -209,4 +209,78 @@ function register_navwalker(){
 	require_once get_template_directory() . '/class-wp-bootstrap-navwalker.php';
 }
 add_action( 'after_setup_theme', 'register_navwalker' );
+
+
+
+function welcome_advertisement_customize_register($wp_customize) {
+    // Section
+    $wp_customize->add_section('welcome_advertisement_section', array(
+        'title'       => __('Welcome Screen Advertisement', 'textdomain'),
+        'description' => __('Settings for the Welcome Screen Advertisement', 'textdomain'),
+        'priority'    => 160,
+    ));
+
+    // Enable Advertisement Toggle
+    $wp_customize->add_setting('enable_advertisement', array(
+        'default' => false,
+        'sanitize_callback' => 'wp_validate_boolean',
+    ));
+    $wp_customize->add_control('enable_advertisement', array(
+        'type'     => 'checkbox',
+        'section'  => 'welcome_advertisement_section',
+        'label'    => __('Enable Advertisement', 'textdomain'),
+    ));
+
+    // Advertisement Design Layout
+    $wp_customize->add_setting('advertisement_layout', array(
+        'default' => 'default',
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+    $wp_customize->add_control('advertisement_layout', array(
+        'type'    => 'select',
+        'section' => 'welcome_advertisement_section',
+        'label'   => __('Advertisement Design Layout', 'textdomain'),
+        'choices' => array(
+            'default' => __('Default', 'textdomain'),
+            'custom'  => __('Custom', 'textdomain'),
+        ),
+    ));
+
+    // Welcome Message
+    $wp_customize->add_setting('advertisement_message', array(
+        'default'           => __('Welcome Advertisement Message', 'textdomain'),
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+    $wp_customize->add_control('advertisement_message', array(
+        'type'    => 'text',
+        'section' => 'welcome_advertisement_section',
+        'label'   => __('Welcome Advertisement Message', 'textdomain'),
+    ));
+
+    // Advertisement Image
+    $wp_customize->add_setting('advertisement_image', array(
+        'default'           => '',
+        'sanitize_callback' => 'esc_url_raw',
+    ));
+    $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'advertisement_image', array(
+        'label'    => __('Upload Advertisement Image', 'textdomain'),
+        'section'  => 'welcome_advertisement_section',
+    )));
+
+    // Advertisement Link
+    $wp_customize->add_setting('advertisement_link', array(
+        'default'           => '',
+        'sanitize_callback' => 'esc_url_raw',
+    ));
+    $wp_customize->add_control('advertisement_link', array(
+        'type'    => 'url',
+        'section' => 'welcome_advertisement_section',
+        'label'   => __('Advertisement Link', 'textdomain'),
+        'description' => __('Leave empty if you don\'t want the image to have a link.', 'textdomain'),
+    ));
+}
+add_action('customize_register', 'welcome_advertisement_customize_register');
+
+
+
 ?>
