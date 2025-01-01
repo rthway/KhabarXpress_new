@@ -9,11 +9,6 @@ body {
     border-bottom: 1px solid #ddd;
 }
 
-.header .date-time {
-    font-size: 14px;
-    color: #555;
-}
-
 .header .social-menu ul {
     list-style: none;
     padding: 0;
@@ -61,4 +56,34 @@ NAVBAR
 .navbar-toggler .fa-bars, 
 .btn i.fas.fa-search {
     color: white; /* Set icon color to white */
+}
+
+/* 
+==============================
+Comment Section
+============================== 
+*/
+
+/* Example CSS for social login buttons and comment section */
+.social-login {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.comment-list {
+    margin-top: 20px;
+}
+
+.comment-list li {
+    margin-bottom: 20px;
+}
+
+.comment-list .comment-body {
+    background: #f1f1f1;
+    padding: 10px;
+}
+
+.comments-title {
+    font-size: 20px;
+    font-weight: bold;
 }

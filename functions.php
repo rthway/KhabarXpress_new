@@ -1,4 +1,10 @@
 <?php
+// Add theme support for featured images
+add_theme_support('post-thumbnails');
+
+// Optional: Set default thumbnail sizes
+set_post_thumbnail_size(300, 200, true);
+
 function khabarxpress_enqueue_styles() {
     // Enqueue theme stylesheet
     wp_enqueue_style('khabarxpress-style', get_stylesheet_uri());
@@ -40,11 +46,72 @@ function khabarxpress_widgets_init() {
         'before_widget' => '<div class="header-ads">',
         'after_widget'  => '</div>',
     ]);
+
+    // Sidebar Ad 1
+    register_sidebar( array(
+        'name'          => 'Sidebar Ad 1',
+        'id'            => 'sidebar-ad-1',
+        'before_widget' => '<div class="sidebar-ad-widget">',
+        'after_widget'  => '</div>',
+        'before_title'  => '<h3 class="widget-title">',
+        'after_title'   => '</h3>',
+    ) );
+
+    // Sidebar Ad 2
+    register_sidebar( array(
+        'name'          => 'Sidebar Ad 2',
+        'id'            => 'sidebar-ad-2',
+        'before_widget' => '<div class="sidebar-ad-widget">',
+        'after_widget'  => '</div>',
+        'before_title'  => '<h3 class="widget-title">',
+        'after_title'   => '</h3>',
+    ) );
+
+    // Sidebar Ad 3
+    register_sidebar( array(
+        'name'          => 'Sidebar Ad 3',
+        'id'            => 'sidebar-ad-3',
+        'before_widget' => '<div class="sidebar-ad-widget">',
+        'after_widget'  => '</div>',
+        'before_title'  => '<h3 class="widget-title">',
+        'after_title'   => '</h3>',
+    ) );
+
+    // After Block Ad 1
+    register_sidebar( array(
+        'name'          => 'After Block Ad 1',
+        'id'            => 'after-block-ad-1',
+        'before_widget' => '<div class="after-block-ad-widget">',
+        'after_widget'  => '</div>',
+        'before_title'  => '<h3 class="widget-title">',
+        'after_title'   => '</h3>',
+    ) );
+
+    // After Block Ad 2
+    register_sidebar( array(
+        'name'          => 'After Block Ad 2',
+        'id'            => 'after-block-ad-2',
+        'before_widget' => '<div class="after-block-ad-widget">',
+        'after_widget'  => '</div>',
+        'before_title'  => '<h3 class="widget-title">',
+        'after_title'   => '</h3>',
+    ) );
+
+    // After Block Ad 3
+    register_sidebar( array(
+        'name'          => 'After Block Ad 3',
+        'id'            => 'after-block-ad-3',
+        'before_widget' => '<div class="after-block-ad-widget">',
+        'after_widget'  => '</div>',
+        'before_title'  => '<h3 class="widget-title">',
+        'after_title'   => '</h3>',
+    ) );
 }
 add_action('widgets_init', 'khabarxpress_widgets_init');
 
 // Customize theme options
 function khabarxpress_customize_register($wp_customize) {
+    
     // Social Links section
     $wp_customize->add_section('social_links', [
         'title'    => __('Social Links', 'khabarxpress'),
@@ -65,6 +132,74 @@ function khabarxpress_customize_register($wp_customize) {
             'type'    => 'url',
         ]);
     }
+
+
+
+
+
+    // Add Featured-post Options Section
+    $wp_customize->add_section( 'featured_post_options' , array(
+        'title'      => __( 'Featured-post Options', 'khabarxpress' ),
+        'priority'   => 30,
+        'description' => 'Customize the Featured Posts section settings',
+    ));
+
+    // Add Number of Posts Setting
+    $wp_customize->add_setting( 'featured_number_of_posts', array(
+        'default' => 6,
+        'sanitize_callback' => 'absint',
+    ));
+    $wp_customize->add_control( 'featured_number_of_posts', array(
+        'label'      => __( 'Number of Posts', 'khabarxpress' ),
+        'section'    => 'featured_post_options',
+        'type'       => 'number',
+        'input_attrs' => array(
+            'min' => 1,
+            'max' => 20,
+        ),
+    ));
+
+    // Add Post Title Font Size Setting
+    $wp_customize->add_setting( 'featured_post_title_font_size', array(
+        'default' => '24px',
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+    $wp_customize->add_control( 'featured_post_title_font_size', array(
+        'label'      => __( 'Post Title Font Size', 'khabarxpress' ),
+        'section'    => 'featured_post_options',
+        'type'       => 'text',
+    ));
+
+    // Add Post Title Color Setting
+    $wp_customize->add_setting( 'featured_post_title_color', array(
+        'default' => '#333333',
+        'sanitize_callback' => 'sanitize_hex_color',
+    ));
+    $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'featured_post_title_color', array(
+        'label'      => __( 'Post Title Color', 'khabarxpress' ),
+        'section'    => 'featured_post_options',
+    )));
+
+    // Add Post Content Font Size Setting
+    $wp_customize->add_setting( 'featured_post_content_font_size', array(
+        'default' => '16px',
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+    $wp_customize->add_control( 'featured_post_content_font_size', array(
+        'label'      => __( 'Post Content Font Size', 'khabarxpress' ),
+        'section'    => 'featured_post_options',
+        'type'       => 'text',
+    ));
+
+    // Add Post Content Color Setting
+    $wp_customize->add_setting( 'featured_post_content_color', array(
+        'default' => '#666666',
+        'sanitize_callback' => 'sanitize_hex_color',
+    ));
+    $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'featured_post_content_color', array(
+        'label'      => __( 'Post Content Color', 'khabarxpress' ),
+        'section'    => 'featured_post_options',
+    )));
 }
 add_action('customize_register', 'khabarxpress_customize_register');
 

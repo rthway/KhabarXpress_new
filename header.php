@@ -4,6 +4,46 @@
     <meta charset="<?php bloginfo('charset'); ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="<?php bloginfo('description'); ?>">
+
+
+
+    <meta charset="<?php bloginfo('charset'); ?>">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="<?php bloginfo('description'); ?>">
+    <meta name="author" content="<?php bloginfo('name'); ?>">
+
+    <!-- SEO Metadata -->
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="<?php echo esc_url(get_permalink()); ?>">
+    
+    <!-- Open Graph Metadata for Social Sharing -->
+    <meta property="og:locale" content="<?php echo get_locale(); ?>">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="<?php wp_title(''); ?>">
+    <meta property="og:description" content="<?php bloginfo('description'); ?>">
+    <meta property="og:url" content="<?php echo esc_url(home_url('/')); ?>">
+    <meta property="og:site_name" content="<?php bloginfo('name'); ?>">
+    <?php if (has_post_thumbnail()) : ?>
+        <meta property="og:image" content="<?php echo get_the_post_thumbnail_url(null, 'large'); ?>">
+    <?php endif; ?>
+
+    <!-- Twitter Card Metadata -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="<?php wp_title(''); ?>">
+    <meta name="twitter:description" content="<?php bloginfo('description'); ?>">
+    <?php if (has_post_thumbnail()) : ?>
+        <meta name="twitter:image" content="<?php echo get_the_post_thumbnail_url(null, 'large'); ?>">
+    <?php endif; ?>
+
+    <!-- Favicon -->
+    <?php if (function_exists('has_site_icon') && has_site_icon()) : ?>
+        <?php wp_site_icon(); ?>
+    <?php else : ?>
+        <link rel="icon" href="<?php echo get_template_directory_uri(); ?>/favicon.ico" type="image/x-icon">
+    <?php endif; ?>
+
+    
     <?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>
@@ -13,7 +53,13 @@
         <div class="row justify-content-between align-items-center bg-primary py-2">
         <!-- Current Date and Time on Left -->
             <div class="col-auto">
-                <span class="date-time"><?php echo date('F j, Y h:i A'); ?></span>
+                <span class="date-time" style="color:#ffffff; )">
+                <?php 
+                echo date('F j, Y h:i A'); 
+                ?>
+                <?php 
+                // echo get_nepali_today_date(); 
+                ?></span>
             </div>
             <!-- Social Menu (Dynamic) on Right -->
             <div class="col-auto">
@@ -56,7 +102,7 @@
 
 
 <!-- Navbar Section -->
-<nav class="navbar navbar-expand-lg  " style="background-color: #1c8b98;">
+<nav class="navbar navbar-expand-lg sticky-top " style="background-color: #1c8b98;">
     <div class="container-fluid">
         
         <!-- Mobile Toggle Button -->
