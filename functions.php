@@ -282,5 +282,4 @@ function welcome_advertisement_customize_register($wp_customize) {
 add_action('customize_register', 'welcome_advertisement_customize_register');
 
 
-
 ?>

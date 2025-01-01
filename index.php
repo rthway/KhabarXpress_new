@@ -30,16 +30,26 @@ get_header(); ?>
             ?>
         </div>
     </div>
-
     <hr>
+    <div class="col-12">
+        <?php if (is_active_sidebar('after-block-ad-1')) : ?>
+                <?php dynamic_sidebar('after-block-ad-1'); ?>
+        <?php endif; ?>
+        </div>
+
+  
 
     <div class="row my-4">
         <div class="col-lg-8"><?php get_template_part('template-parts/block-01'); ?></div>
         <div class="col-lg-4">
+        <?php if (is_active_sidebar('sidebar-ad-1')) : ?>
+                <?php dynamic_sidebar('sidebar-ad-1'); ?>
+        <?php endif; ?>
         </div>
     </div>
 
-    
+
+
 
 
 </div>

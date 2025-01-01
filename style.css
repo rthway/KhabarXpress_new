@@ -87,3 +87,54 @@ Comment Section
     font-size: 20px;
     font-weight: bold;
 }
+
+
+
+/* 
+==============================
+TOP 10 post Widget
+============================== 
+*/
+/* Trending News Widget Styles */
+.trending-news-widget {
+    background-color: #f9f9f9;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.widget-title {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #007bff;
+    margin-bottom: 10px;
+}
+
+.trending-news-list {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.trending-news-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.trending-news-title {
+    font-size: 1.2rem;
+    color: #333;
+    text-decoration: none;
+    margin-right: 15px;
+}
+
+.trending-news-title:hover {
+    color: #007bff;
+}
+
+.trending-news-thumbnail img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 5px;
+}
